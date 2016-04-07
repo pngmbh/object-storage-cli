@@ -1,5 +1,5 @@
 SHORT_NAME := object-storage-cli
-REPO_PATH := github.com/arschles/${SHORT_NAME}
+REPO_PATH := github.com/deis/${SHORT_NAME}
 
 HOST_OS := $(shell uname)
 ifeq ($(HOST_OS),Darwin)

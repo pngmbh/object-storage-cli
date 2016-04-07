@@ -3,9 +3,9 @@ package main
 import (
 	"os"
 
-	"github.com/arschles/object-storage-cli/actions"
-	"github.com/arschles/object-storage-cli/config"
 	"github.com/codegangsta/cli"
+	"github.com/deis/object-storage-cli/actions"
+	"github.com/deis/object-storage-cli/config"
 )
 
 func main() {
