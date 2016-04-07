@@ -4,8 +4,8 @@ import (
 	"io/ioutil"
 	"log"
 
-	"github.com/arschles/object-storage-cli/config"
 	"github.com/codegangsta/cli"
+	"github.com/deis/object-storage-cli/config"
 	"github.com/docker/distribution/context"
 )
 
