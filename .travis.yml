@@ -1,0 +1,23 @@
+language: generic
+branches:
+  only:
+  - master
+cache:
+  directories:
+  - vendor
+services:
+- docker
+sudo: required
+install:
+- make bootstrap
+script:
+- make build test dist prep-bintray-json
+deploy:
+  provider: bintray
+  skip_cleanup: true
+  file: _scripts/ci/bintray-ci.json
+  user: deis-admin
+  key:
+    secure: ZazS3VV7K7RsfpUJ6pl9xbRP5yR8TTJmVyamwVThcmcUpCfNtGGVBJdzmu+S3X1eVa9XSgUayLc1yF1HZ0WkB50mZnQQcEsfhSvEnkn2YFAVPOZIn5GYJTDL4llUNImbMz3VB7/a4XC5n+6dnWY4Q76Smqj5kgsfmr7w74PUf21iPyr8F4vkyND2Pli3BdR1AUH9PF5ICZAZcJ8HLZe522YXUuxENCjb8s2tic5OroAAymkhKbmGmogjfBJXAIUu+O+FX01XSoaVn6cE9EXtsraMNDm8LWUwElnqXlfL8I5tZP1omkoiN9cpC128uwwMOV7WzsEGvnSHxv3v43NmYOhjL8OGNn1xsDmtdXpO36evxD1VF8CB3A+p+c/H7sv7lfvRlbd59ye2HBNBI1Wo8PyOP7KJ+mQsh/2Ow9tEQjvainTQ0ca98LS2O2QyVuUSVuknc95wDsugszPGSwjZvHUO6wjl01O/mSybgIVKmQq9QNlUge5KhWpmrL/TnHBS7spzesDEg76qJt4tlTefL2QGknz9IqCoIsiKE6zVOvwJBFs7UQti2c0HThk1KL18qXa8qKHm57AqOct22I8rNyI4MOirv7sCA/GzygraIuQiZNwGBgV7t3XZglXhPNFaP93+X2eNZuXpBu+vierRcy3ay4Un/d4hOHwJpfODgok=
+  on:
+    branch: master

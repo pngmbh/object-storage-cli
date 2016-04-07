@@ -24,3 +24,5 @@ _testmain.go
 *.prof
 object-storage-cli
 objstorage
+vendor
+_dist
