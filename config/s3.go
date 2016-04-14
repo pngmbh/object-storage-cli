@@ -23,8 +23,8 @@ func (s S3) CreateDriver() (driver.StorageDriver, error) {
 	}
 	key, secret, region, bucket := files[0], files[1], files[2], files[3]
 	params := map[string]interface{}{
-		"accessKey": key,
-		"secretKey": secret,
+		"accesskey": key,
+		"secretkey": secret,
 		"region":    region,
 		"bucket":    bucket,
 	}
