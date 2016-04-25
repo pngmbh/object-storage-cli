@@ -1,4 +1,4 @@
-package: github.com/arschles/object-storage-cli
+package: github.com/deis/object-storage-cli
 import:
 - package: github.com/codegangsta/cli
 - package: github.com/docker/distribution
