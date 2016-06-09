@@ -20,6 +20,8 @@ const (
 	AzureStorageType StorageType = "azure"
 	// MinioStorageType is the storage type for Minio. See https://minio.io/ for more information
 	MinioStorageType StorageType = "minio"
+	// SwiftStorageType is the storage type for swift. See http://docs.openstack.org/developer/swift/ for more information
+	SwiftStorageType StorageType = "swift"
 )
 
 // ErrUnknownStorageType is an error that indicates that a given storage type string is unknown
@@ -43,6 +45,8 @@ func StorageTypeFromString(s string) (StorageType, error) {
 		return AzureStorageType, nil
 	case MinioStorageType.String():
 		return MinioStorageType, nil
+	case SwiftStorageType.String():
+		return SwiftStorageType, nil
 	default:
 		return StorageType(""), ErrUnknownStorageType{typeStr: s}
 	}

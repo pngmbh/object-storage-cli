@@ -1,5 +1,5 @@
-hash: e6a7cc4f1ee8dda11e1efb830973ba5fb962638d0e4d1a430ecb3ee06a41e1f7
-updated: 2016-04-23T16:18:33.303711258Z
+hash: afd3644715738d26acb3a97ccff76c2eeb3f772dbd20c911ced9c6aeb77abdde
+updated: 2016-06-09T13:23:28.318628039-06:00
 imports:
 - name: github.com/arschles/assert
   version: d21ecd4884be33397d1298c3738b2b4937c7f499
@@ -7,40 +7,36 @@ imports:
   version: 49c3892b61af1d4996292a3025f36e4dfa25eaee
   subpackages:
   - aws
+  - aws/awserr
+  - aws/awsutil
+  - aws/client
+  - aws/client/metadata
+  - aws/corehandlers
+  - aws/credentials
+  - aws/credentials/ec2rolecreds
+  - aws/defaults
+  - aws/ec2metadata
+  - aws/request
+  - aws/session
   - private/endpoints
   - private/protocol
+  - private/protocol/query
+  - private/protocol/query/queryutil
+  - private/protocol/rest
+  - private/protocol/restxml
+  - private/protocol/xml/xmlutil
   - private/signer/v4
   - private/waiter
   - service/cloudfront/sign
   - service/s3
-  - aws/awserr
-  - aws/credentials
-  - aws/credentials/ec2rolecreds
-  - aws/ec2metadata
-  - aws/request
-  - aws/session
-  - aws/client
-  - aws/client/metadata
-  - aws/awsutil
-  - aws/corehandlers
-  - aws/defaults
-  - private/protocol/restxml
-  - private/protocol/query
-  - private/protocol/rest
-  - private/protocol/xml/xmlutil
-  - private/protocol/query/queryutil
 - name: github.com/Azure/azure-sdk-for-go
   version: 95361a2573b1fa92a00c5fc2707a80308483c6f9
   subpackages:
   - storage
-- name: github.com/bradfitz/http2
-  version: f8202bc903bda493ebba4aa54922d78430c2c42f
-  subpackages:
-  - hpack
 - name: github.com/codegangsta/cli
   version: bc465becccd1d527002fda095fc3c19d9c115029
 - name: github.com/docker/distribution
-  version: d90ad66106dab9137e450d426c12603e8feb4b65
+  version: 9d344ec549689dca0f43f850cb86751cced3f309
   repo: https://github.com/deis/distribution
   vcs: git
   subpackages:
@@ -48,15 +44,17 @@ imports:
   - registry/storage/driver/azure
   - registry/storage/driver/gcs
   - registry/storage/driver/s3-aws
+  - registry/storage/driver/swift
   - context
+  - registry/storage/driver/factory
   - uuid
   - registry/storage/driver/base
-  - registry/storage/driver/factory
   - registry/client/transport
+  - version
 - name: github.com/go-ini/ini
   version: afbd495e5aaea13597b5e14fe514ddeaa4d76fc3
 - name: github.com/golang/protobuf
-  version: 0f7a9caded1fb3c9cc5a9b4bcf2ff633cc8ae644
+  version: 8d92cf5fc15a4382f8964b08e1f42a75c0591aa3
   subpackages:
   - proto
 - name: github.com/gorilla/context
@@ -67,8 +65,16 @@ imports:
   version: 0b12d6b521d83fc7f755e7cfc1b1fbdd35a01a74
 - name: github.com/kelseyhightower/envconfig
   version: cea086319492c3940683ea5e122aa5de70a33923
+- name: github.com/mitchellh/mapstructure
+  version: 482a9fd5fa83e8c4e7817413b80f3eb8feec03ef
+- name: github.com/ncw/swift
+  version: c54732e87b0b283d1baf0a18db689d0aea460ba3
+  subpackages:
+  - swifttest
 - name: github.com/Sirupsen/logrus
   version: 55eb11d21d2a31a3cc93838241d04800f52e823d
+  subpackages:
+  - formatters/logstash
 - name: golang.org/x/net
   version: c2528b2dd8352441850638a8bb678c2ad056fd3e
   subpackages:
@@ -76,6 +82,8 @@ imports:
   - trace
   - internal/timeseries
   - context/ctxhttp
+  - http2
+  - http2/hpack
 - name: golang.org/x/oauth2
   version: 8914e5017ca260f2a3a1575b1e6868874050d95e
   subpackages:
@@ -91,17 +99,17 @@ imports:
   - googleapi/internal/uritemplates
   - gensupport
 - name: google.golang.org/appengine
-  version: 41265fb44deca5c3b05a946d5db1f54ae54fe67e
+  version: 12d5545dc1cfa6047a286d5e853841b6471f4c19
   subpackages:
-  - urlfetch
   - internal
-  - internal/urlfetch
   - internal/app_identity
-  - internal/modules
   - internal/base
   - internal/datastore
   - internal/log
+  - internal/modules
   - internal/remote_api
+  - urlfetch
+  - internal/urlfetch
 - name: google.golang.org/cloud
   version: 2400193c85c3561d13880d34e0e10c4315bb02af
   subpackages:
@@ -110,11 +118,14 @@ imports:
   - internal
   - internal/opts
 - name: google.golang.org/grpc
-  version: 91c8b79535eb6045d70ec671d302213f88a3ab95
+  version: d3ddb4469d5a1b949fc7a7da7c1d6a0d1b6de994
   subpackages:
   - codes
   - credentials
   - grpclog
+  - internal
   - metadata
+  - naming
+  - peer
   - transport
 devImports: []

@@ -38,6 +38,8 @@ func FromStorageType(st StorageType) (Config, error) {
 		conf = new(Azure)
 	case MinioStorageType:
 		conf = new(Minio)
+	case SwiftStorageType:
+		conf = new(Swift)
 	default:
 		return nil, ErrUnsupportedStorageType{st: st}
 	}
