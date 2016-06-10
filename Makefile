@@ -20,27 +20,19 @@ GO_LDFLAGS = -ldflags "-s -X ${REPO_PATH}/version.BuildVersion=${VERSION}"
 
 VERSION ?= $(shell git rev-parse --short HEAD)
 
-prep-bintray-json:
-# TRAVIS_TAG is set to the tag name if the build is a tag
-ifdef TRAVIS_TAG
-	@jq '.version.name |= "$(VERSION)"' _scripts/ci/bintray-template.json | \
-		jq '.package.repo |= "deis"' > _scripts/ci/bintray-ci.json
-else
-	@jq '.version.name |= "$(VERSION)"' _scripts/ci/bintray-template.json \
-		> _scripts/ci/bintray-ci.json
-endif
-
 bootstrap:
 	${DEV_ENV_CMD} glide install
 
 build: binary-build
 
 build-all:
-	${DEV_ENV_CMD} gox -verbose \
-	${GO_LDFLAGS} \
-	-os="linux darwin " \
-	-arch="amd64 386" \
-	-output="$(DIST_DIR)/${BINARY_NAME}-${VERSION}-{{.OS}}-{{.Arch}}" .
+	${DEV_ENV_CMD} gox -verbose ${GO_LDFLAGS} -os="linux darwin " -arch="amd64 386" -output="$(DIST_DIR)/${BINARY_NAME}-latest-{{.OS}}-{{.Arch}}" .
+ifdef TRAVIS_TAG
+	${DEV_ENV_CMD} gox -verbose ${GO_LDFLAGS} -os="linux darwin" -arch="amd64 386" -output="$(DIST_DIR)/${TRAVIS_TAG}/${BINARY_NAME}-${TRAVIS_TAG}-{{.OS}}-{{.Arch}}" .
+else
+	${DEV_ENV_CMD} gox -verbose ${GO_LDFLAGS} -os="linux darwin" -arch="amd64 386" -output="$(DIST_DIR)/${VERSION}/${BINARY_NAME}-${VERSION}-{{.OS}}-{{.Arch}}" .
+endif
+
 
 binary-build:
 	${DEV_ENV_PREFIX} -e GOOS=${GOOS} ${DEV_ENV_IMAGE} go build -a ${GO_LDFLAGS} -o ${BINARY_NAME} .
