@@ -1,5 +1,5 @@
-hash: afd3644715738d26acb3a97ccff76c2eeb3f772dbd20c911ced9c6aeb77abdde
-updated: 2016-06-09T13:23:28.318628039-06:00
+hash: fbc54749758c17e9582df3a7a0770c217cf79e477262dbcb5364f57de104dd34
+updated: 2016-06-13T17:50:47.912708246-06:00
 imports:
 - name: github.com/arschles/assert
   version: d21ecd4884be33397d1298c3738b2b4937c7f499
@@ -36,7 +36,7 @@ imports:
 - name: github.com/codegangsta/cli
   version: bc465becccd1d527002fda095fc3c19d9c115029
 - name: github.com/docker/distribution
-  version: 9d344ec549689dca0f43f850cb86751cced3f309
+  version: 0afef00d5764404d70f86076f364551657d51de6
   repo: https://github.com/deis/distribution
   vcs: git
   subpackages:
