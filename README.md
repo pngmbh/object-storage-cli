@@ -1,3 +1,9 @@
+
+|![](https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Warning.svg/156px-Warning.svg.png) | Deis Workflow will soon no longer be maintained.<br />Please [read the announcement](https://deis.com/blog/2017/deis-workflow-final-release/) for more detail. |
+|---:|---|
+| 09/07/2017 | Deis Workflow [v2.18][] final release before entering maintenance mode |
+| 03/01/2018 | End of Workflow maintenance: critical patches no longer merged |
+
 # object-storage-cli
 A Command Line (CLI) Tool for Utilizing Multiple Object Storage Systems from a Single Interface.
 
@@ -76,3 +82,5 @@ curl -o object-storage-cli https://storage.googleapis.com/object-storage-cli/obj
 curl -o object-storage-cli https://storage.googleapis.com/object-storage-cli/objstorage-latest-linux-386
 ./object-storage-cli --version
 ```
+
+[v2.18]: https://github.com/deis/workflow/releases/tag/v2.18.0
