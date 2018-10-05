@@ -11,11 +11,12 @@ This CLI accepts a single flag called `--storage-type`. The value of that flag d
 
 ## `s3`
 
-If the storage type is `s3`, the CLI reads three files which specify access key, access secret and region. Each file location can be configured by an environment variable. Each environment variable and its default is listed below.
+If the storage type is `s3`, the CLI reads five files which specify the configuration. Each file location can be configured by an environment variable. Each environment variable and its default is listed below.
 
 - `ACCESS_KEY_FILE` (`/var/run/secrets/deis/objectstore/creds/accesskey`)
 - `SECRET_KEY_FILE` (`/var/run/secrets/deis/objectstore/creds/secretkey`)
 - `REGION_FILE` (`/var/run/secrets/deis/objectstore/creds/region`)
+- `ENDPOINT_FILE` (`/var/run/secrets/deis/objectstore/creds/endpoint`)
 - `BUCKET_FILE` (`/var/run/secrets/deis/objectstore/creds/bucket`)
 
 ## `gcs`
