@@ -1,0 +1,16 @@
+version: 2
+jobs:
+  build:
+    machine:
+      docker_layer_caching: true
+    steps:
+      - checkout
+      - run:
+          name: Bootstrap
+          command: make bootstrap
+      - run:
+          name: Build (all)
+          command: make build test dist
+      - store_artifacts:
+          path: _dist/
+          destination: bin
