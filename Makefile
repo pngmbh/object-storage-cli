@@ -23,6 +23,9 @@ VERSION ?= $(shell git rev-parse --short HEAD)
 bootstrap:
 	${DEV_ENV_CMD} glide install
 
+glideup:
+	${DEV_ENV_CMD} glide up
+
 build: binary-build
 
 build-all:

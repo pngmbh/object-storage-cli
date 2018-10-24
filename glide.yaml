@@ -2,15 +2,9 @@ package: github.com/deis/object-storage-cli
 import:
 - package: github.com/codegangsta/cli
 - package: github.com/docker/distribution
-  repo: https://github.com/deisthree/distribution
-  version: 0afef00d5764404d70f86076f364551657d51de6
+  repo: https://github.com/teamhephy/distribution
+  version: 5a101320cc27f191cef9b608f344a76d9f6b10f8
   vcs: git
-  subpackages:
-  - registry/storage/driver
-  - registry/storage/driver/azure
-  - registry/storage/driver/gcs
-  - registry/storage/driver/s3-aws
-  - registry/storage/driver/swift
 - package: github.com/kelseyhightower/envconfig
 - package: github.com/arschles/assert
 - package: google.golang.org/cloud

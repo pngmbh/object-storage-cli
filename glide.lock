@@ -1,10 +1,10 @@
-hash: fbc54749758c17e9582df3a7a0770c217cf79e477262dbcb5364f57de104dd34
-updated: 2016-06-13T17:50:47.912708246-06:00
+hash: 472b73540f00da413106262e12af98bcb400693d2202f9db93d8a024f825a0d3
+updated: 2018-10-24T14:35:55.0969461Z
 imports:
 - name: github.com/arschles/assert
   version: d21ecd4884be33397d1298c3738b2b4937c7f499
 - name: github.com/aws/aws-sdk-go
-  version: 49c3892b61af1d4996292a3025f36e4dfa25eaee
+  version: 027c0bda560ef6bae8e84a3fd91d9863129329a7
   subpackages:
   - aws
   - aws/awserr
@@ -14,45 +14,60 @@ imports:
   - aws/corehandlers
   - aws/credentials
   - aws/credentials/ec2rolecreds
+  - aws/credentials/endpointcreds
+  - aws/credentials/stscreds
+  - aws/csm
   - aws/defaults
   - aws/ec2metadata
+  - aws/endpoints
   - aws/request
   - aws/session
-  - private/endpoints
+  - aws/signer/v4
+  - internal/ini
+  - internal/s3err
+  - internal/sdkio
+  - internal/sdkrand
+  - internal/sdkuri
+  - internal/shareddefaults
   - private/protocol
+  - private/protocol/eventstream
+  - private/protocol/eventstream/eventstreamapi
   - private/protocol/query
   - private/protocol/query/queryutil
   - private/protocol/rest
   - private/protocol/restxml
   - private/protocol/xml/xmlutil
-  - private/signer/v4
-  - private/waiter
-  - service/cloudfront/sign
   - service/s3
+  - service/sts
 - name: github.com/Azure/azure-sdk-for-go
   version: 95361a2573b1fa92a00c5fc2707a80308483c6f9
   subpackages:
   - storage
+- name: github.com/beorn7/perks
+  version: 3a771d992973f24aa725d07868b467d1ddfceafb
+  subpackages:
+  - quantile
 - name: github.com/codegangsta/cli
   version: bc465becccd1d527002fda095fc3c19d9c115029
 - name: github.com/docker/distribution
-  version: 0afef00d5764404d70f86076f364551657d51de6
-  repo: https://github.com/deisthree/distribution
+  version: 5a101320cc27f191cef9b608f344a76d9f6b10f8
+  repo: https://github.com/teamhephy/distribution
   vcs: git
   subpackages:
+  - context
+  - metrics
+  - registry/client/transport
   - registry/storage/driver
   - registry/storage/driver/azure
+  - registry/storage/driver/base
+  - registry/storage/driver/factory
   - registry/storage/driver/gcs
   - registry/storage/driver/s3-aws
   - registry/storage/driver/swift
-  - context
-  - registry/storage/driver/factory
   - uuid
-  - registry/storage/driver/base
-  - registry/client/transport
   - version
-- name: github.com/go-ini/ini
-  version: afbd495e5aaea13597b5e14fe514ddeaa4d76fc3
+- name: github.com/docker/go-metrics
+  version: 399ea8c73916000c64c2c76e8da00ca82f8387ab
 - name: github.com/golang/protobuf
   version: 8d92cf5fc15a4382f8964b08e1f42a75c0591aa3
   subpackages:
@@ -65,39 +80,72 @@ imports:
   version: 0b12d6b521d83fc7f755e7cfc1b1fbdd35a01a74
 - name: github.com/kelseyhightower/envconfig
   version: cea086319492c3940683ea5e122aa5de70a33923
+- name: github.com/konsorten/go-windows-terminal-sequences
+  version: 5c8c8bd35d3832f5d134ae1e1e375b69a4d25242
+- name: github.com/matttproud/golang_protobuf_extensions
+  version: c12348ce28de40eed0136aa2b644d0ee0650e56c
+  subpackages:
+  - pbutil
 - name: github.com/mitchellh/mapstructure
   version: 482a9fd5fa83e8c4e7817413b80f3eb8feec03ef
 - name: github.com/ncw/swift
   version: c54732e87b0b283d1baf0a18db689d0aea460ba3
+- name: github.com/prometheus/client_golang
+  version: 16f375c74db6ccf880e1cd9c6c6087a6d58e5d12
   subpackages:
-  - swifttest
-- name: github.com/Sirupsen/logrus
-  version: 55eb11d21d2a31a3cc93838241d04800f52e823d
+  - prometheus
+  - prometheus/internal
+  - prometheus/promhttp
+- name: github.com/prometheus/client_model
+  version: 5c3871d89910bfb32f5fcab2aa4b9ec68e65a99f
   subpackages:
-  - formatters/logstash
+  - go
+- name: github.com/prometheus/common
+  version: 7e9e6cabbd393fc208072eedef99188d0ce788b6
+  subpackages:
+  - expfmt
+  - internal/bitbucket.org/ww/goautoneg
+  - model
+- name: github.com/prometheus/procfs
+  version: 185b4288413d2a0dd0806f78c90dde719829e5ae
+  subpackages:
+  - internal/util
+  - nfs
+  - xfs
+- name: github.com/sirupsen/logrus
+  version: 4fabf2fffcecfd47f802869b7b92d75e43c5a095
+- name: golang.org/x/crypto
+  version: 0c41d7ab0a0ee717d4590a44bcb987dfd9e183eb
+  subpackages:
+  - ssh/terminal
 - name: golang.org/x/net
   version: c2528b2dd8352441850638a8bb678c2ad056fd3e
   subpackages:
   - context
-  - trace
-  - internal/timeseries
   - context/ctxhttp
   - http2
   - http2/hpack
+  - internal/timeseries
+  - trace
 - name: golang.org/x/oauth2
   version: 8914e5017ca260f2a3a1575b1e6868874050d95e
   subpackages:
   - google
-  - jwt
   - internal
   - jws
+  - jwt
+- name: golang.org/x/sys
+  version: 44b849a8bc13eb42e95e6c6c5e360481b73ec710
+  subpackages:
+  - unix
+  - windows
 - name: google.golang.org/api
   version: fceeaa645c4015c833842e6ed6052b2dda667079
   subpackages:
-  - storage/v1
+  - gensupport
   - googleapi
   - googleapi/internal/uritemplates
-  - gensupport
+  - storage/v1
 - name: google.golang.org/appengine
   version: 12d5545dc1cfa6047a286d5e853841b6471f4c19
   subpackages:
@@ -108,15 +156,15 @@ imports:
   - internal/log
   - internal/modules
   - internal/remote_api
-  - urlfetch
   - internal/urlfetch
+  - urlfetch
 - name: google.golang.org/cloud
   version: 2400193c85c3561d13880d34e0e10c4315bb02af
   subpackages:
-  - storage
   - compute/metadata
   - internal
   - internal/opts
+  - storage
 - name: google.golang.org/grpc
   version: d3ddb4469d5a1b949fc7a7da7c1d6a0d1b6de994
   subpackages:
@@ -128,4 +176,4 @@ imports:
   - naming
   - peer
   - transport
-devImports: []
+testImports: []
