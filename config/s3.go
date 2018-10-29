@@ -12,21 +12,23 @@ type S3 struct {
 	AccessKeyFile string `envconfig:"ACCESS_KEY_FILE" default:"/var/run/secrets/deis/objectstore/creds/accesskey"`
 	SecretKeyFile string `envconfig:"SECRET_KEY_FILE" default:"/var/run/secrets/deis/objectstore/creds/secretkey"`
 	RegionFile    string `envconfig:"REGION_FILE" default:"/var/run/secrets/deis/objectstore/creds/region"`
+	EndpointFile  string `envconfig:"ENDPOINT_FILE" default:"/var/run/secrets/deis/objectstore/creds/endpoint"`
 	BucketFile    string `envconfig:"BUCKET_FILE" default:"/var/run/secrets/deis/objectstore/creds/bucket"`
 }
 
 // CreateDriver is the Config interface implementation
 func (s S3) CreateDriver() (driver.StorageDriver, error) {
-	files, err := readFiles(true, s.AccessKeyFile, s.SecretKeyFile, s.RegionFile, s.BucketFile)
+	files, err := readFiles(true, s.AccessKeyFile, s.SecretKeyFile, s.RegionFile, s.EndpointFile, s.BucketFile)
 	if err != nil {
 		return nil, err
 	}
-	key, secret, region, bucket := files[0], files[1], files[2], files[3]
+	key, secret, region, endpoint, bucket := files[0], files[1], files[2], files[3], files[4]
 	params := map[string]interface{}{
-		"accesskey": key,
-		"secretkey": secret,
-		"region":    region,
-		"bucket":    bucket,
+		"accesskey":      key,
+		"secretkey":      secret,
+		"region":         region,
+		"regionendpoint": endpoint,
+		"bucket":         bucket,
 	}
 	return factory.Create("s3aws", params)
 }
